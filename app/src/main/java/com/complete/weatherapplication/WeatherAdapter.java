@@ -1,6 +1,7 @@
 package com.complete.weatherapplication;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.complete.weatherapplication.databinding.CardviewBinding;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,7 +39,8 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.AdapterV
 
         WeatherRVModel model = arrayList.get(position);
         holder.binding.temperature.setText(model.getTemperature()+"°C");
-        Picasso.get().load("http:".concat(model.getIcon())).into(holder.binding.icon);
+        Picasso.get().load("https:".concat(model.getIcon())).into(holder.binding.icon);
+
         holder.binding.windspeed.setText(model.getWindSpeed()+"KM/H");
         SimpleDateFormat input = new SimpleDateFormat("yyy-MM-dd hh:mm");
         SimpleDateFormat output = new SimpleDateFormat("hh:mm aa");
